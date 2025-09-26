@@ -1,0 +1,16 @@
+[package]
+name = "num-literal-traits"
+version = "0.1.0"
+edition = "2024"
+authors = ["Sascha Klick <rustdev@sklick.de>"]
+license = "MIT"
+description = "Convert numerical literals from strings to numbers."
+homepage = "https://github.com/saschaklick/num_literal_traits"
+repository = "https://github.com/saschaklick/num_literal_traits"
+keywords = ["parsing", "number", "literal", "argument"]
+categories = ["parser-implementations", "parsing"]
+
+[lib]
+
+[dependencies]
+num-traits = "0.2.19"

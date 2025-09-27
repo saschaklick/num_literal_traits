@@ -1,4 +1,4 @@
-# num_literal_traits
+# num-literal-traits
 
 Add parsing support for numerical literals to integer types.
 

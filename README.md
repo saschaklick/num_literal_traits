@@ -1,4 +1,4 @@
-# bitmap_writer
+# num_literal_traits
 
 Add parsing support for numerical literals to integer types.
 

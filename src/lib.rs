@@ -92,6 +92,11 @@ mod tests {
     use super::*;
     
     #[test]
+
+    fn null_works() {
+        let result = u32::parse_literal("0");
+        assert_eq!(result, Ok(0));    
+    }
     fn binary_works() {
         let result = u32::parse_literal("0B1000111011000010");
         assert_eq!(result, Ok(36546));    

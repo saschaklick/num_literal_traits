@@ -14,7 +14,7 @@ fn identify_literal<'a>(text: &'a str) -> (&'a str, u32) {
     return
         if text.to_lowercase().starts_with("0b") { (&text[2..], 2) } else            
         if text.to_lowercase().starts_with("0x") { (&text[2..], 16) } else            
-        if text.to_lowercase().starts_with("0") { (&text[1..], 8) } else
+        if text.len() > 1 && text.to_lowercase().starts_with("0") { (&text[1..], 8) } else
         { (text, 10) };
 }
 

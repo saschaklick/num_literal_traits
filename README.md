@@ -8,7 +8,7 @@ To use `num_literal_traits`, first add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-num_literal_traits = "0.1.2"
+num_literal_traits = "0.1.3"
 ```
 
 Next, add this to your crate:

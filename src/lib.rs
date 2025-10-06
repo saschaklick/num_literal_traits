@@ -39,6 +39,9 @@ pub trait NumLiteralTrait<T: Num>: Num {
     ///
     /// let result = u32::parse_literal("CAFE");
     /// assert!(result.is_err());
+    /// 
+    /// let result = u32::parse_literal("'A'");
+    /// assert_eq!(result, Ok(65));
     /// ```
     ///
     /// # Supported formats
@@ -48,6 +51,7 @@ pub trait NumLiteralTrait<T: Num>: Num {
     /// Octal       : `0123`, `00`, `04763523`
     /// Decimal     : `123`, `0`, `7635223`    
     /// Hexadecimal : `0xCAFE`, `0x0`, `0xa1fb484`
+    /// Char        : `'A'`, `'!'`
     ///
     /// Additionally, the numeric parts can contain underscores `_` to
     /// which get removed before converting.    
@@ -73,6 +77,10 @@ pub trait NumLiteralTrait<T: Num>: Num {
     ///
     /// let result = u32::parse_literal_fallback("CAFE", 0xfabc);
     /// assert_eq!(result, 0xfabc);
+    ///     
+    /// let result = u32::parse_literal_fallback("'全'", 0xfabc);
+    /// assert_eq!(result, 0xfabc);
+    ///    
     /// ```
     fn parse_literal_fallback(text: &str, fallback: T) -> T;
 }
@@ -122,6 +130,24 @@ mod tests {
     #[test]
     fn random_text_fails() {
         let res = u32::parse_literal("t322545");
+        assert!(res.is_err());
+    }
+
+    #[test]
+    fn empty_char_fails() {
+        let res = u32::parse_literal("''");
+        assert!(res.is_err());
+    }
+
+    #[test]
+    fn multiple_chars_fails() {
+        let res = u32::parse_literal("'ABC'");
+        assert!(res.is_err());
+    }
+
+    #[test]
+    fn nonascii_chars_fails() {
+        let res = u32::parse_literal("'全'");
         assert!(res.is_err());
     }
 
